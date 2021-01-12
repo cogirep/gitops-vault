@@ -18,27 +18,47 @@ jxRequirements:
     enabled: false
     schedule: ""
   cluster:
+    azure:
+      dns:
+        resourceGroup: rg-dns-hotowl
+        subscriptionId: 39721339-fe83-4562-afec-783c3f00c06f
+        tenantId: 7ce2e3f3-3358-4a5d-87a1-595bca60c7db
+      secretStorage:
+        keyVaultName: hotowl
+      storage:
+        storageAccountName: jxhotowl
+    chartOCI: true
+    chartRepository: hotowl.azurecr.io
+    environmentGitOwner: cogirep
     gitKind: github
     gitName: github
     gitServer: https://github.com
     provider: aks
+    registry: hotowl.azurecr.io
   environments:
   - key: dev
+    owner: cogirep
+    repository: gitops-vault
   ingress:
-    domain: ""
-    externalDNS: false
+    domain: jx.cogirep.fr
+    externalDNS: true
     kind: ingress
     namespaceSubDomain: -secret-infra.
     tls:
       email: ""
       enabled: false
       production: false
+  pipelineUser:
+    username: mylittlebot
   repository: nexus
   secretStorage: vault
+  storage:
+  - name: logs
+    url: azblob://logs
   vault: {}
   webhook: lighthouse
 jxRequirementsIngressExternalDNS:
-  enabled: false
+  enabled: true
 jxRequirementsIngressTLS:
   enabled: false
 jxRequirementsKuberhealthy:
