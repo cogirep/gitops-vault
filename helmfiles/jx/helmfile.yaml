@@ -59,5 +59,12 @@ releases:
   values:
   - ../../versionStream/charts/jx3/jx-build-controller/values.yaml.gotmpl
   - jx-values.yaml
+- chart: bitnami/external-dns
+  version: 4.5.0
+  condition: jxRequirementsIngressExternalDNS.enabled
+  name: external-dns
+  values:
+  - ../../versionStream/charts/bitnami/external-dns/values.yaml.gotmpl
+  - jx-values.yaml
 templates: {}
 renderedvalues: {}
